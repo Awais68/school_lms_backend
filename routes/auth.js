@@ -38,7 +38,7 @@ router.post(
     }
 
     // Check for user
-    const user = await User.findOne({ email }).populate("branchId");
+    const user = await User.findOne({ email });
 
     if (user && (await user.comparePassword(password))) {
       if (!user.isActive) {
