@@ -30,6 +30,7 @@ const branchRoutes = require("./routes/branches");
 
 // Create Express app
 const app = express();
+const cors = require("cors");
 
 // Security middleware
 app.use(helmet());
@@ -41,9 +42,19 @@ app.use(
 );
 
 // CORS configuration
+// app.use(
+//   cors({
+//     origin: process.env.CLIENT_URL || "http://localhost:3000",
+//     credentials: true,
+//   })
+// );
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin: [
+      "http://localhost:3000",
+      "https://school-lms-frontend-ten.vercel.app",
+    ],
     credentials: true,
   })
 );
