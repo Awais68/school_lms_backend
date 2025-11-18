@@ -30,7 +30,6 @@ const branchRoutes = require("./routes/branches");
 
 // Create Express app
 const app = express();
-const cors = require("cors");
 
 // Security middleware
 app.use(helmet());
