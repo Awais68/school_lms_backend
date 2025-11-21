@@ -48,6 +48,51 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: null,
     },
+    profileImage: {
+      type: String,
+      default: null,
+    },
+    privacySettings: {
+      profileVisibility: {
+        type: String,
+        enum: ["public", "private", "friends"],
+        default: "public",
+      },
+      showEmail: {
+        type: Boolean,
+        default: true,
+      },
+      showPhone: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    notificationSettings: {
+      emailNotifications: {
+        type: Boolean,
+        default: true,
+      },
+      pushNotifications: {
+        type: Boolean,
+        default: true,
+      },
+      smsNotifications: {
+        type: Boolean,
+        default: false,
+      },
+      assignmentReminders: {
+        type: Boolean,
+        default: true,
+      },
+      gradeUpdates: {
+        type: Boolean,
+        default: true,
+      },
+      eventNotifications: {
+        type: Boolean,
+        default: true,
+      },
+    },
     role: {
       type: String,
       required: true,

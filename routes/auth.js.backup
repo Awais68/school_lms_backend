@@ -38,7 +38,7 @@ router.post(
     }
 
     // Check for user
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).populate("branchId");
 
     if (user && (await user.comparePassword(password))) {
       if (!user.isActive) {
@@ -238,7 +238,7 @@ router.put(
       });
     }
 
-    const user = await User.findById(req.user._id).select("+password");
+    const user = await User.findById(req.user.id);
 
     if (user && (await user.comparePassword(currentPassword))) {
       user.password = newPassword;
